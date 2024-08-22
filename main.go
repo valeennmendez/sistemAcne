@@ -38,7 +38,7 @@ func main() {
 	r.POST("/logout", routes.CloseSesion)
 
 	// Rutas protegidas
-	protected := r.Group("/")
+/* 	protected := r.Group("/")
 	protected.Use(routes.AuthMiddleware())
 	{
 		//protected.StaticFile("/index.html", "./pages/index.html")
@@ -49,7 +49,7 @@ func main() {
 		protected.DELETE("/patients/:id", routes.DeletePacients)
 		protected.GET("/total-patients", routes.TotalPatientsData)
 
-	}
+	} */
 
 	r.POST("/create-appointment", routes.CreateAppoinment)
 	r.GET("/appointment-today", routes.AppointmentToday)
@@ -58,6 +58,12 @@ func main() {
 	r.GET("/appointments", routes.GetAllAppointments)
 
 	r.DELETE("/cancel-appointment/:id", routes.CancelAppointment) // <--- DEBE ESTAR PUBLICA SI O SI.
+
+	r.GET("/session-status", func(c *gin.Context){
+		c.JSON(http.StatusAccepted, gin.H{
+		"message": "logeado",
+		})
+	}
 
 	// Ruta raíz
 	r.GET("/", func(c *gin.Context) {
