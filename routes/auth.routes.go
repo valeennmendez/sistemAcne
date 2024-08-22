@@ -119,8 +119,6 @@ func Login(c *gin.Context) {
 		"message": "Login succesful",
 		"session": session.ID,
 	})
-	c.Redirect(http.StatusFound, "/index.html")
-
 }
 
 func AuthMiddleware() gin.HandlerFunc {
