@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         .then(data =>{
             console.log(data.message)
              if(data.message === 'Login succesful'){
-                window.location.replace("https://sistemacne-production.up.railway.app/index.html")
+                window.location.replace("https://sistemacne-production.up.railway.app/session-status")
                 return
             }else{
                 error.classList.add("active")
