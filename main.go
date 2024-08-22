@@ -29,6 +29,7 @@ func main() {
 	// Servir archivos estáticos
 	r.Static("/static", "./static")
 	r.StaticFile("/login.html", "./pages/login.html")
+	r.StaticFile("/index.html","./pages/index.html")
 
 	// Rutas de autenticación
 	r.POST("/register", routes.RegisterUser)
@@ -40,7 +41,7 @@ func main() {
 	protected := r.Group("/")
 	protected.Use(routes.AuthMiddleware())
 	{
-		protected.StaticFile("/index.html", "./pages/index.html")
+		//protected.StaticFile("/index.html", "./pages/index.html")
 		protected.GET("/patients", routes.GetAllPatients)
 		protected.GET("/patients/:id", routes.GetPatientByID)
 		protected.POST("/create", routes.CreatePatient)
