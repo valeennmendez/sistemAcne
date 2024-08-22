@@ -156,6 +156,8 @@ func ValidateSession(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message": "Session valid",
 	})
+
+	c.Redirect(http.StatusFound, "/index.html")
 }
 
 func CloseSesion(c *gin.Context) {
